@@ -1,0 +1,180 @@
+<!--
+    Proyecto final de DIW
+    AUTHOR : Iván Sánchez Victoria
+    
+     -->
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Autobus</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style>
+
+            .navbar {
+                margin-bottom: 0;
+                border-radius: 0;
+            }
+
+            .row.content {height: 450px}
+
+            .sidenav {
+                padding-top: 20px;
+                background-color: #f1f1f1;
+                height: 100%;
+            }
+
+            footer {
+                background-color: #555;
+                color: white;
+                padding: 15px;
+            }
+
+            @media screen and (max-width: 767px) {
+                .sidenav {
+                    height: auto;
+                    padding: 15px;
+                }
+
+                .row.content {height:auto;} 
+            }
+
+        </style>
+        <script type=text/javascript>
+
+            // funcion Ajax, muestra solo los destinos posibles dependiendo del origen introducido
+            function showDestino(str) {
+                if (str == "") {
+                    document.getElementById("destino").innerHTML = "";
+                    return;
+                } else { 
+                    if (window.XMLHttpRequest) {
+                        // code for IE7+, Firefox, Chrome, Opera, Safari
+                        xmlhttp = new XMLHttpRequest();
+                    } 
+                    xmlhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            document.getElementById("destino").innerHTML = this.responseText;
+                        }
+                    };
+                    xmlhttp.open("GET","index.php?q="+str,true);
+                    xmlhttp.send();
+                }
+            }
+
+        </script>
+    </head>
+    <body>
+        <a href="autobus.html"><img class="img-responsive center-block" id="logo" src="img/logo.jpg" href="index.html"></a>
+        
+        <!-- Header -->
+        
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>                        
+                    </button>
+                    <a class="navbar-brand" href="autobus.html">Inicio</a>
+                </div>
+                
+                <!-- Menu -->
+                
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">Ayuda</a></li>
+                        <li><a href="#">Proyecto</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+         <!-- Contenedor -->
+        
+        <div class="container-fluid text-center">    
+            <div class="row content">
+                <div class="col-sm-2 sidenav">
+                    <p><a href="linea426.html">Linea 426</a></p>
+                    <p><a href="linea551.html">Linea 551</a></p>
+                    <p><a href="linea650.html">Linea 650</a></p>
+                </div>
+                <div class="col-sm-8 text-left"> 
+                    <h1>Welcome</h1>  
+                    <p>Aqui va informacion Aqui va informacion Aqui va informacion Aqui va informacion Aqui va informacion Aqui va informacion Aqui va informacion Aqui va informacion Aqui va informacion Aqui va informacion Aqui va informacion Aqui va informacion Aqui va informacion </p>
+                    <hr>
+                    <h3>Horarios</h3>
+                    <p> Origen:
+                        <select name="origen" onchange="showDestino(this.value)">
+                            <option selected value="">Seleccione Origen</option>
+                            <option value="0">Madrid(Principe Pio)</option>
+                            <option value="1">Cerberos/El tiemblo</option>
+                            <option value="2">Madrid(Legazpi)</option>
+                            <option value="3">Ciempozuelos</option>
+                            <option value="4">Pozuelo de Alarcón</option>
+                            <option value="5">Majadahonda</option>
+                        </select></p>
+                        
+                         <!-- Select generado con ajax -->
+                    <p> Destino:
+                        <select id="destino">
+
+                            <option selected >Seleccione Destino</option>
+                        </select></p>
+                </div>
+
+            </div>
+        </div>
+
+         <!-- Footer -->
+        
+        <footer class="page-footer font-small blue-grey lighten-5 pt-0">
+
+            <div class="container mt-5 mb-4 text-center text-md-left">
+                <div class="row mt-3">
+
+                    <div class="col-md-3 col-lg-4 col-xl-3 mb-4 dark-grey-text">
+                        <h6 class="title font-weight-bold"><strong>Autobus express</strong></h6>
+                        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p>Aqui va informacion Aqui va informacion Aqui va informacion Aqui va informacion Aqui va informacion </p>
+                    </div>
+
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 dark-grey-text">
+                        <h6 class="title font-weight-bold"><strong>Productos</strong></h6>
+                        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p><a href="#!" class="dark-grey-text">lineas</a></p>
+                        <p><a href="#!" class="dark-grey-text">lineas</a></p>
+                        <p><a href="#!" class="dark-grey-text">lineas</a></p>
+                        <p><a href="#!" class="dark-grey-text">lineas</a></p>
+                    </div>
+                
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 dark-grey-text">
+                        <h6 class="title font-weight-bold"><strong>Links </strong></h6>
+                        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p><a href="#" class="dark-grey-text">Link 1</a></p>
+                        <p><a href="#" class="dark-grey-text">Link 2</a></p>
+                        <p><a href="#" class="dark-grey-text">Link 3</a></p>
+                        <p><a href="#" class="dark-grey-text">Link 4</a></p>
+                    </div>
+                    
+                    <div class="col-md-4 col-lg-3 col-xl-3 dark-grey-text">
+                        <h6 class="title font-weight-bold"><strong>Contacto</strong></h6>
+                        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p><i class="glyphicon glyphicon-envelope"></i>  info@ejemplo.com </p>
+                        <p><i class="glyphicon glyphicon-earphone"></i> + 01 23 456 78 89</p>
+                        <p><i class="glyphicon glyphicon-map-marker"></i> Calle Ejemplo, 20</p>
+
+                    </div>
+                </div>
+            </div>   
+        </footer>
+    </body>
+</html>
